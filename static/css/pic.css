@@ -1,12 +1,21 @@
 h6{
   font-size: 300%;
   color: darkolivegreen;
+  font-weight: 800;
 }
 
 
 .footer {
   background-color: darkolivegreen;
 }
+
+ 
+#cancel {
+  float: right;
+}
+
+
+
 /* OVERLAY
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .containers {
