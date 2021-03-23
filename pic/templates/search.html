@@ -1,0 +1,73 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content %}
+
+{{block.super}}
+
+<!-- Landing Page -->
+<div class="banner-1">
+    <div class="cover-1">
+        {% if images%}
+        <h2>Found {{ images|length}} images for searched term {{message}}</h2>
+        <hr>
+        {% else %}
+        <h2>Found 0 articles for the search term {{message}}</h2>
+        {% endif %}
+        <div class="container imageloc">
+            <form class="form" role="search" action="{% url 'search_image' %}">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+                  <br>
+                 </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="container wrap">
+    <!-- Looping through images -->
+    <div class="row">
+    {% for image in images %}
+        <!-- displaying images -->
+         <div class="col-xs-6 col-sm-6  col-md-4 col-lg-3">
+                 <div class="portfolio-wrap ">
+                     <div class="portfolio-wrap hovereffect">
+                         <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                             <img style="width:100%; height:80%;" src="{{image.pic.url}}" href="" class="image" alt="Image" >
+                             <div class="overlay">
+                              <h2 class="desc">{{image.name}}</h2>
+                              <p class="desc">{{image.description}}</p>
+
+                              <div class="col-md-3">
+                                  <h4>Location</h4>
+                                  <p>{{image.image_location.name}}</p>
+                                  <h4>Category</h4>
+                                  <p>{{image.image_category.name}}</p>
+
+                              </div>
+
+                             </div>
+                         </a>
+                     </div>
+                 </div>
+             </div>
+        {% empty %}
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <img src="{% static 'images/sorry.png' %}" alt="" class = "oops">
+            <h2 class="text-center"> Sorry no image for {{message}} category. Images are comming soon.</h2>
+        </div>
+    </div>
+    {% endfor %}
+
+    <!-- looping through image details modal class -->
+</div>
+
+
+
+
+{% endblock %}
