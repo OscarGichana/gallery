@@ -1,8 +1,26 @@
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'ftPic' %}">Oscar's Gallery</a>
+      <a class="navbar-brand" href="{% url 'ftPic' %}">OzZy_WoRlD</a>
     </div>
 
+    <!-- Adding a search form  -->
+    <div class="col-sm-4 col-md-4 navbar-right">
+
+      <form class="navbar-form" role="search" action="{% url 'search_image' %}">
+
+        <div class="input-group">
+          <form class="form" role="search" action="{% url 'search_image' %}">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+              <br>
+             </div>
+        </form>
+    </div>
+
+      </form>
+    </div>
+    <!-- search form end -->
   </div>
 </nav>

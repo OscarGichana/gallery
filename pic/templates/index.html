@@ -1,0 +1,81 @@
+{%extends 'base.html'%}
+
+
+{% block content %} 
+{{ block.super}}
+
+
+<div class="container">
+  <div class="row">
+    <img   style="width:100%; height:500px;" src="/static/images/source.gif" alt="Nature" class="responsive"> 
+  </div>
+<hr>
+    {% for image in images %}
+    <!-- displaying images -->
+    <div class="portfolio-wrap ">
+      <div class="btn-group">
+
+          <div class="portfolio-wrap hovereffect">
+              <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                  <img style="width:50%; height:300px;"  src="{{image.pic.url}}" href="" class="image" alt="Image" >
+                
+                  <div class="overlay">
+                      <h4>{{image.name}}</h4>
+                      <button type="button" class="open-modal" data-open="modal1">
+                      Launch first modal with a slide animation
+                      </button>
+
+                  </div>
+              </a>
+          </div>
+      </div>
+
+    </div>
+
+    <div class="modal" id="modal1" data-animation="slideInOutLeft">
+      <div class="modal-dialog">
+
+        <header class="modal-header">
+          The header of the first modal
+          <button class="close-modal" aria-label="close modal" data-close>
+            ✕  
+          </button>
+        </header>
+        <section class="modal-content">
+          <a href="{% url 'single' category_name=image.image_category.name image_id=image.id %}">
+          <img id="img{{image.id}}" src="{{image.pic.url}}" class="img-thumbnail" alt="Image" style="cursor:pointer; width:50%; height:300px;"></a>
+
+          <!-- <img style="width:50%; height:300px;"  src="{{image.pic.url}}" href="" class="image" alt="Image" > -->
+        </section>
+        <div class="col-md-3">
+          <h4 class = "desc">Location</h4>
+          <p>{{image.image_location.name}}</p>
+          <h4 class = "desc">Category</h4>
+          <p>{{image.image_category.name}}</p>
+      </div>
+      <div>
+          <h2 class="desc">{{image.name}}</h2>
+          <p class="desc">{{image.description}}</p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-success btn-sm" onclick="copyLink('{{image.id}}.url')">Copy</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
+        </button>
+      </div>
+
+
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+</div>
+
+{% endblock %}
+
+
+

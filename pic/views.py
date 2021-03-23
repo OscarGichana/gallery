@@ -2,19 +2,74 @@ from django.shortcuts import render, redirect
 from django.http  import HttpResponse
 import datetime as dt
 from django.http  import HttpResponse,Http404
-from .models import Picture
+from .models import Image,Category,Editor,Location
 
 # Create your views here.
 
-def pic(request):
-    date = dt.date.today()
-    pic = Picture.ft_pic()
-    return render(request, 'pic.html', {"date": date,"pic":pic})
+def index(request):
+    images = Image.get_all_images()
+    locations = Location.objects.all()
+    title = 'O_world'
+    return render(request, 'index.html', {"locations": locations,"title": title,"images":images})
 
 
-def picture(request,picture_id):
+def image(request,image_id):
     try:
-        picture = Picture.objects.get(id = picture_id)
+        image = Image.objects.get(id = image_id)
+    except Image.DoesNotExist:
+        raise Http404()
+    return render(request,"article.html", {"image":image})
+
+
+
+def single(request,category_name,image_id):
+    # images = Image.get_image_by_id(image_id)
+    title = 'Image'
+    locations = Location.objects.all()
+    # category = Category.get_category_id(id = image_category)
+    image_category = Image.objects.filter(image_category__name = category_name)
+    try:
+        image = Image.objects.get(id = image_id)
     except DoesNotExist:
         raise Http404()
-    return render(request,"article.html", {"picture":picture})
+    return render(request,"article.html",{'title':title,"image":image, "locations":locations, "image_category":image_category})
+
+
+def location_filter(request, image_location):
+    locations = Location.objects.all()
+    location = Location.get_location_id(image_location)
+    images = Image.filter_by_location(image_location)
+
+    title = f'{location} Photos'
+    return render(request, 'location.html', {'title':title, 'images':images, 'locations':locations, 'location':location})
+
+
+def search_results(request):
+
+    if 'image_category' in request.GET and request.GET["image_category"]:
+        search_term = request.GET.get("image_category")
+        searched_articles = Image.search_by_category(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"image_category": searched_articles})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'search.html',{"message":message})
+
+
+def search_image(request):
+    title = 'Search'
+    categories = Category.objects.all()
+    locations = Location.objects.all()
+    if 'image_category' in request.GET and request.GET['image_category']:
+        search_term = request.GET.get('image_category')
+        found_results = Image.search_by_category(search_term)
+        message = f"{search_term}"
+        print(search_term)
+        print(found_results)
+
+        return render(request, 'search.html',{'title':title,'images': found_results, 'message': message, 'categories': categories, "locations":locations})
+    else:
+        message = 'You havent searched yet'
+        return render(request, 'search.html',{"message": message})
