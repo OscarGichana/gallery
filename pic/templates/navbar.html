@@ -1,26 +1,22 @@
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="{% url 'ftPic' %}">OzZy_WoRlD</a>
-    </div>
-
-    <!-- Adding a search form  -->
-    <div class="col-sm-4 col-md-4 navbar-right">
-
-      <form class="navbar-form" role="search" action="{% url 'search_image' %}">
-
+<div class="row containers">
+    
+  <img   style="width:100%; height:500px;" src="/static/images/source.gif" alt="Nature" class="responsive">
+  <div class="top-left"><a class="navbar-brand" href="{% url 'ftPic' %}"><h6>OzZy_WoRlD</h6></a>
+  </div>
+  <div class="top-right">
+    <div class="input-group">
+      <form class="form" role="search" action="{% url 'search_image' %}">
         <div class="input-group">
-          <form class="form" role="search" action="{% url 'search_image' %}">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
-              <br>
-             </div>
-        </form>
-    </div>
-
+          <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+          <br>
+         </div>
       </form>
     </div>
-    <!-- search form end -->
   </div>
-</nav>
+ 
+  <div class="middle">
+    <h2 style="color:aliceblue;">A Website where you get to view amazing gallery pictures taken in various locations</h2>
+    <div style="color:black;" class="text">WELCOME TO OzZy_WorLD </div>
+  </div>
+
+</div>

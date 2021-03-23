@@ -14,6 +14,7 @@ const copyMeOnClipboard = () => {
 
 
 
+
 const openEls = document.querySelectorAll("[data-open]");
 const closeEls = document.querySelectorAll("[data-close]");
 const isVisible = "is-visible";

@@ -3,28 +3,23 @@
  {% block content %}
 
  <div class="container">
-
+<hr>
    <div class="row">
      <img src="{{image.pic.url}}" style="width:50%; height:300px;"   class="img-responsive" alt="">
    </div>
 
    <div class="row">
-     <h1 class="text-center">{{image.name}}</h1>
-   </div>
-
-   <div class="row">
-    <h1 class="text-center">{{image.image_category}}</h1>
+    <h2 class="desc">{{image.name}}</h2>
+    <p class="desc">{{image.description}}</p>
   </div>
-
   <div class="row">
-    <h1 class="text-center">{{image.image_location}}</h1>
-  </div>
 
-   <div class="row">
-     <p>{{image.description}}</p>
-   </div>
+    <div class="col-md-3 ">
+        <h4>Location:</h4>
+        <p>{{image.image_location.name}}</p>
+        <h4>Category:</h4>
+        <p>{{image.image_category.name}}</p>
 
-   <div class="row">
      <p>Posted by {{image.image_editor.first_name}}</p>
    </div>
 
@@ -33,3 +28,4 @@
 
 
  {% endblock %}
+<hr>

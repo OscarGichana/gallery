@@ -111,5 +111,6 @@ class Category(models.Model):
         category = Category.objects.get(pk = id)
         return category
 
+
     def __str__(self):
         return self.name

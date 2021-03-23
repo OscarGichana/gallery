@@ -6,31 +6,33 @@
 
 
 <div class="container">
-  <div class="row">
-    <img   style="width:100%; height:500px;" src="/static/images/source.gif" alt="Nature" class="responsive"> 
-  </div>
 <hr>
+
+  <div class="row">
     {% for image in images %}
-    <!-- displaying images -->
-    <div class="portfolio-wrap ">
-      <div class="btn-group">
+      <!-- displaying images -->
+      <div class="portfolio-wrap ">
+        <div class="btn-group">
 
-          <div class="portfolio-wrap hovereffect">
-              <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
-                  <img style="width:50%; height:300px;"  src="{{image.pic.url}}" href="" class="image" alt="Image" >
-                
-                  <div class="overlay">
+          <div class="row containers">
+            <a class="img-overlay" data-toggle="modal" data-target="#{{image.id}}" style="width:100%">
+                    <img style="width:50%; height:300px;" id="imgCap"  src="{{image.pic.url}}" href="" class="image" alt="Image" >
+                  
+                    <div class="middle">
+                      <hr>
                       <h4>{{image.name}}</h4>
-                      <button type="button" class="open-modal" data-open="modal1">
-                      Launch first modal with a slide animation
-                      </button>
+                        <button type="button" class="open-modal" data-open="modal1">
+                          View details of this Image.
+                        </button>
+                        <hr>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-                  </div>
-              </a>
-          </div>
       </div>
-
-    </div>
+  </div>
+    <hr>
 
     <div class="modal" id="modal1" data-animation="slideInOutLeft">
       <div class="modal-dialog">
@@ -43,7 +45,7 @@
         </header>
         <section class="modal-content">
           <a href="{% url 'single' category_name=image.image_category.name image_id=image.id %}">
-          <img id="img{{image.id}}" src="{{image.pic.url}}" class="img-thumbnail" alt="Image" style="cursor:pointer; width:50%; height:300px;"></a>
+          <img src="{{image.pic.url}}" class="img-thumbnail" alt="Image" style="cursor:pointer; width:50%; height:300px;"></a>
 
           <!-- <img style="width:50%; height:300px;"  src="{{image.pic.url}}" href="" class="image" alt="Image" > -->
         </section>
@@ -59,9 +61,11 @@
       </div>
 
       <div class="modal-footer">
-        <button class="btn btn-success btn-sm" onclick="copyLink('{{image.id}}.url')">Copy</button>
-        <button type="button" class="btn btn-outline-danger btn-sm" data-dismiss="modal">Close
+        <button id="{{image.id}}.url" class="btn btn-success btn-sm" onclick="myFunction('{{image.id}}.url')">Copy</button>
+        <button class="close-modal btn btn-outline-danger btn-sm" type="button" aria-label="close modal" data-close>
+          Close
         </button>
+
       </div>
 
 
@@ -70,11 +74,14 @@
 
   {% endfor %}
 
-  </div>
-
-
 </div>
 
+
+
+    
+
+
+  
 {% endblock %}
 
 
