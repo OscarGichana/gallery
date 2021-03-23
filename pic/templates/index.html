@@ -43,10 +43,7 @@
             <h2 class="desc">{{image.name}}</h2>
           </div>
           <div class="col-md-2">
-            <button id="cancel" class="close-modal" aria-label="close modal" style=" padding-top: 25px;" data-close>
-              ✕  
-            </button>
-          </div>
+            </div>
         </div>
 
         <div class="row">
@@ -71,9 +68,9 @@
             <p class="desc">{{image.description}}</p>
         </div>
 
-        <div class="modal-footer">
+        <div class="modal-footer" style="background-color: darkolivegreen;">
           <button id="{{image.id}}.url" class="btn btn-success btn-sm" onclick="myFunction('{{image.id}}.url')">Copy</button>
-          <button class="close-modal btn btn-outline-danger btn-sm" type="button" aria-label="close modal" data-close>
+          <button style="background-color: darkslategray; color: floralwhite;" class="close-modal btn btn-outline-danger btn-sm" type="button" aria-label="close modal" data-close>
             Close
           </button>
 

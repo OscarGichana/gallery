@@ -5,27 +5,38 @@
 {{block.super}}
 
 <!-- Landing Page -->
-<div class="banner-1">
-    <div class="cover-1">
-        {% if images%}
-        <h2>Found {{ images|length}} images for searched term {{message}}</h2>
-        <hr>
-        {% else %}
-        <h2>Found 0 articles for the search term {{message}}</h2>
-        {% endif %}
-        <div class="container imageloc">
-            <form class="form" role="search" action="{% url 'search_image' %}">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
-                  <br>
-                 </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 
 <div class="container wrap">
+
+
+    <div class="banner-1">
+        <div class="cover-1">
+            {% if images%}
+            <h2>Found {{ images|length}} images for searched term {{message}}</h2>
+            <hr>
+            {% else %}
+            <h2>Found 0 articles for the search term {{message}}</h2>
+            {% endif %}
+            <div class="container imageloc">
+                <form class="form" role="search" action="{% url 'search_image' %}">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="&#xf3ee; Search by category"name="image_category">
+                      <br>
+                     </div>
+                </form>
+                <form class="form" role="search" action="{% url 'search_results' %}">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="&#xf3ee; Search by location"name="image_location">
+                      <br>
+                     </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+    <hr>
+
     <!-- Looping through images -->
     <div class="row">
     {% for image in images %}

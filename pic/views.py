@@ -45,17 +45,18 @@ def location_filter(request, image_location):
 
 
 def search_results(request):
+    locations = Location.objects.all()
 
-    if 'image_category' in request.GET and request.GET["image_category"]:
-        search_term = request.GET.get("image_category")
-        searched_articles = Image.search_by_category(search_term)
+    if 'image_location' in request.GET and request.GET["image_location"]:
+        search_term = request.GET.get("image_location")
+        searched_articles = Image.filter_by_location(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"image_category": searched_articles})
+        return render(request, 'location.html',{"message":message, "locations":locations, "images": searched_articles})
 
     else:
         message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        return render(request, 'location.html',{"message":message})
 
 
 def search_image(request):

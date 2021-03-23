@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^image/(?P<category_name>\w+)/(?P<image_id>\d+)',views.single,name = 'single'),
     url(r'^location/(?P<image_location>\d+)', views.location_filter, name='location_filter'),
     url(r'^search/', views.search_image, name='search_image'),
+    url(r'^locations/', views.search_results, name='search_results'),
 
 ]
 
