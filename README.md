@@ -24,7 +24,7 @@ A gallery app that displays pictures taken in various locations in the world gro
 
 ## Website Link
 
-Copy the link https://ossyblog.herokuapp.com/ in your browser and be updated.
+Copy the link https://ozzyworld.herokuapp.com/ in your browser and be updated.
 
 
 ## Build
