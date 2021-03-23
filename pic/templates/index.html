@@ -1,4 +1,5 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
 
 
 {% block content %} 
@@ -69,8 +70,12 @@
         </div>
 
         <div class="modal-footer" style="background-color: darkolivegreen;">
-          <button id="{{image.id}}.url" class="btn btn-success btn-sm" onclick="myFunction('{{image.id}}.url')">Copy</button>
-          <button style="background-color: darkslategray; color: floralwhite;" class="close-modal btn btn-outline-danger btn-sm" type="button" aria-label="close modal" data-close>
+            <!-- The text field -->
+            <input type="text" value="{{image.pic.url}}" id="{{image.id}}.url">
+
+            <!-- The button used to copy the text -->
+            <button onclick="copy('{{image.id}}.url')">Copy image</button> 
+            <button style="background-color: darkslategray; color: floralwhite;" class="close-modal btn btn-outline-danger btn-sm" type="button" aria-label="close modal" data-close>
             Close
           </button>
 
@@ -86,7 +91,6 @@
 
 
 
-    
 
 
   

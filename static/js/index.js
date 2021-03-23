@@ -1,17 +1,21 @@
-const copyText = document.querySelector("#copyMe")
-const showText = document.querySelector("p")
+// const copyText = document.querySelector("#copyMe")
+// const showText = document.querySelector("p")
 
-const copyMeOnClipboard = () => {
-  copyText.select()
-  copyText.setSelectionRange(0, 99999) // used for mobile phone
-  document.execCommand("copy")
-  showText.innerHTML = `${copyText.value} is copied`
-  setTimeout(() => {
-    showText.innerHTML = ""
-  }, 1000)
+// const copyMeOnClipboard = () => {
+//   copyText.select()
+//   copyText.setSelectionRange(0, 99999) // used for mobile phone
+//   document.execCommand("copy")
+//   showText.innerHTML = `${copyText.value} is copied`
+//   setTimeout(() => {
+//     showText.innerHTML = ""
+//   }, 1000)
+// }
+
+const copy = (element) => {
+  document.getElementById(element).select();
+  document.execCommand("copy");
 }
-
-
+  
 
 
 
