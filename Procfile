@@ -1,1 +1,4 @@
-web: gunicorn gallery.wsgi --log-file -
+release: python3 manage.py makemigrations
+release: python3 manage.py migrate
+
+web: gunicorn gallery.wsgi
