@@ -15,10 +15,13 @@ import django_heroku
 import dj_database_url
 from decouple import config,Csv
 
-import os
-import django_heroku
-import dj_database_url
-from decouple import config,Csv
+from django.core.wsgi import get_wsgi_application
+#  from whitenoise.django import DjangoWhiteNoise
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ss.settings')
+
+application = get_wsgi_application()
+#  application = DjangoWhiteNoise(application)
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
