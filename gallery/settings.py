@@ -24,7 +24,7 @@ application = get_wsgi_application()
 #  application = DjangoWhiteNoise(application)
 
 MODE=config("MODE", default="prod")
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
 if config('MODE')=="prod":
