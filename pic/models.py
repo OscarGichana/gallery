@@ -1,5 +1,6 @@
 from django.db import models
 import datetime as dt
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Editor(models.Model):
@@ -20,8 +21,10 @@ class Editor(models.Model):
 
 class Image(models.Model):
     name = models.CharField(max_length = 60)
-    pic = models.ImageField(upload_to = 'uploads/')
-    picture = models.ImageField( blank = True,)
+    pic = CloudinaryField('pic') 
+    # image-field name
+    # pic = models.ImageField(upload_to = 'uploads/')
+    # picture = models.ImageField( blank = True,)
     description = models.TextField()
     image_editor = models.ForeignKey('Editor',on_delete=models.CASCADE,null=True)
     image_location = models.ForeignKey('Location',on_delete=models.CASCADE,null=True)

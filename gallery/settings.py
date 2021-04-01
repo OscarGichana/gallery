@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
@@ -64,8 +67,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pic.apps.PicConfig',
     'bootstrap3',
+    'cloudinary',
 
 ]
+
+cloudinary.config( 
+  cloud_name ='oscarrito', 
+  api_key ='827845982482824', 
+  api_secret ='xPAnMTzigO-1yH_U-S_57A4e7Rg', 
+)
+
 
 MIDDLEWARE = [
         # Simplified static file serving.
