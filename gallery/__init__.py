@@ -1,1 +1,1 @@
-from gallery.settings.base import *
+# from gallery.settings.base import *

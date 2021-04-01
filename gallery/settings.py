@@ -18,16 +18,12 @@ from decouple import config,Csv
 from django.core.wsgi import get_wsgi_application
 #  from whitenoise.django import DjangoWhiteNoise
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ss.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ss.settings')
 
-application = get_wsgi_application()
 #  application = DjangoWhiteNoise(application)
 
-MODE=config("MODE", default="prod")
-SECRET_KEY = os.environ.get('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
 # development
-if config('MODE')=="prod":
+if config('MODE')=="dev":
    DATABASES = {
        'default': {
            'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -64,9 +60,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'o671@*4k5n&qhykyb8e8-0o_hfdp61s8%4fe7$fpwyc@i!8#is'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -159,6 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Africa/Nairobi'
+
 
 USE_I18N = True
 
